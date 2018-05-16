@@ -1,68 +1,71 @@
-Damien Sudol
-p1 README
-04/16/18
+//Damien Sudol
+//HW3 README
+//Version 1.0
 
-********************************************************************
-			VowelFinder.cpp Read Me
+*********************************************************************************
 
-Thank-you for choosing VowelFinder, the program using concurrent 
-programming to track all your vowels!
-VowelFinder is designed to accept a directory path from the user.
-File path should lead to a directory of 20 files, with the naming
-convention file1.txt, file2.txt ..... file19.txt, file20.txt .
-VowelFinder will keep a running total of each respective vowel 
-accross all files. After all files have been processed VowelFinder 
-will print a vowel, followed by the total found accross all files.
-Upper and lowercase vowels will be treated as equivalent.
+				LazyDentistit.cpp
 
-********************************************************************
-			Entering File Path
+The LazyDentist program is a simulation of the Lazy Dentist problem, solved
+through the use of semaphores, ensuring all aspects of the program are 
+executed with a logic determining the ordering of exectuion and how
+threads are communicating within the program. 
 
-There are three acceptable ways to enter the filepath. 
-VowelFinder will prompt user to enter the file path leading 
-to the directory holding files to be processed.
-1)
+LazyDentist will accept two command line arguments, both integer values:
+	first argument)   Waiting room seat count
+	second argument)  Number of Customer
 
-One file path possibility would be to enter an equivalent to a "pwd"
-as if you were in said directory which contains files. 
-Path should NOT end with a "/".
+
+These arguments will influence how many threads the program utilizes,
+number of Customers == number of Customer threads.
+
+All output shares a single lock, ensuring complete output, used for 
+debugging and verification. Additonal locks have been added to
+threads to ensure all operations are completed atomically, preventing
+any possible race conditions. 
+
+
+
+*********************************************************************************
+
+			Compiling LazyDentist.cpp
+
+Follow the provided command line instruction for compiling. Instruction is
+designed to be entered from within the CWD containing LazyDentist.cpp.
+Command:
+	g++ -std=c++11 LazyDentist.cpp -lpthread
+
+
+			Running LazyDentist.cpp
+
+After succesfully compiling LazyDentist.cpp use the provided command line input
+to ensure proper execution from within the CWD containing LazyDentist.cpp:
+Command:
+	./a.out [seat count] [patient count]
 
 Example:
-	/home/[user]/Documents/FileFolder
+	./a.out 4 6
+
+Provided example will execute LazyDentist program with 4 waiting room seats
+and 6 patients.
+
+			Exiting LazyDentist.cpp
+
+Program contains intended infinite loops and will not voluntarily exit. To exit
+use the provided command.
+Command:
+	CTRL c
+
+*****************************Important Notes*************************************
+
+Command line input is designed to be positive integer values.
+Any values entered which are not positive integers will result in undesired
+behavior and possible crashing of the program.
+
+Program contains intended infinite loops. Program is not desined to voluntarily 
+exit. User must manually exit program. Refer to above, "Exiting LazyDentist.cpp"
+
+*********************************************************************************
 
 
-2)
-User may also enter file path from the directory they are currently
-in. For example, if you are Files are in:
-
-	 /home/[user]/Documents/FileFolder
-
-and you are currently in /home/[user] . program would accept
-the file path:
-
-	Documents/FileFolder
-
-3)
-If user is currently within the directory where target files are 
-contained they may simply hit the "return" key, with no text or 
-white space. 
-
-
-**If file path is incorrect or necessasry files are not present within
-the direcotry, program will provide an error message and exit the 
-program.
-
-*********************************************************************
-			Compiling VowelFinder.cpp
-
-VowelFinder uses elements of c++11 and pthreads. To compile and run
-VowelFinder please follow the below instructions.
-
-	1)Ensure CWD contains file VowelFinder.cpp
-	2)Enter the command:
-			g++ -std=c++11 VowelFinder.cpp -lpthread
-	3)Next, to run VowelFinder enter command:
-			./a.out
-	4)Follow above instructions for "Entering File Path"
-				
-
+	 
